@@ -12,6 +12,8 @@ class Square extends React.Component {
         onClick={() => this.props.onClick(this.props.location)}
       >
         {getAlphaLocation(this.props.location)}
+        {// TODO : get url of potential piece to display
+        }
       </button>
     );
   }
