@@ -1,0 +1,31 @@
+.square {
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 64px;
+  height: 64px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 64px;
+  color: white;
+}
+
+.light {
+  background: #777;
+}
+
+.dark {
+  background: #333;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.square:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .3);
+}
