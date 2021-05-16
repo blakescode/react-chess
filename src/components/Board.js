@@ -19,6 +19,7 @@ class Board extends React.Component {
                     key={location}
                     squareColor={squareColor}
                     location={location}
+                    piece={this.props.boardState[row][col]}
                     onClick={(location) => this.props.onClick(location)}
                   />
                 );

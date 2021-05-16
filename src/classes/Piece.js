@@ -1,11 +1,11 @@
+/* eslint-disable */
 export class Piece {
-  constructor(name, color, [row, col]) {
+  constructor(name, color) {
     this.name = name,
-    this.color = color,
-    this.location = [row, col]
+    this.color = color
   }
 
   getImageURL() {
-    return '../../public/assets/' + this.color + '-' + this.name;
+    return process.env.PUBLIC_URL + '/assets/' + this.color + '-' + this.name + '.png';
   }
 }
