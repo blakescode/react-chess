@@ -1,12 +1,10 @@
 .square {
-  border: 1px solid #999;
+  border: none;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 64px;
   height: 64px;
-  margin-right: -1px;
-  margin-top: -1px;
   padding: 0;
   text-align: center;
   width: 64px;
@@ -14,18 +12,32 @@
 }
 
 .light {
-  background: #777;
+  background: #ffffd9;
+}
+
+.light.active {
+  background: #ffff69;
 }
 
 .dark {
-  background: #333;
+  background: #689c5a;
 }
 
-.square:focus {
-  outline: none;
+.dark.active {
+  background: #9ec232;
 }
+
+/* 
+.square:hover {
+  cursor: pointer;
+  filter: brightness(50%);
+} */
 
 .square:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, .3);
+}
+
+.piece {
+  height: 80%;
+  margin-top: 10%;
 }

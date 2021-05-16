@@ -8,4 +8,8 @@ export class Piece {
   getImageURL() {
     return process.env.PUBLIC_URL + '/assets/' + this.color + '-' + this.name + '.png';
   }
+
+  getName() {
+    return this.name;
+  }
 }

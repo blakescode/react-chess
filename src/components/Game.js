@@ -16,7 +16,11 @@ class Game extends React.Component {
   handleClick([row, col]) {
     let alphaLocation = getAlphaLocation([row, col]);
     console.log(alphaLocation + ' clicked');
-    this.state.moves.concat(this.state.turnNumber + ' ' + alphaLocation);
+  }
+
+  squareContainsPiece([row, col]) {
+    const current = this.state.history[this.state.turnNumber];
+    return Boolean(current[row][col]);
   }
 
   render() {

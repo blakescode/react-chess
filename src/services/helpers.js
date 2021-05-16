@@ -9,13 +9,12 @@ export function getAlphaLocation([row, col]) {
 export function getInitialBoard() {
   let board = Array(8).fill().map(() => Array(8));
   let index = 0;
-  Array(8).fill(null).map((_, row) => {
-    Array(8).fill(null).map((_, col) => {
+  Array(8).fill(null).forEach((_, row) => {
+    Array(8).fill(null).forEach((_, col) => {
       board[row][col] = INIT_BOARD[index];
       index++;
     });
   });
-  console.log(board);
   return board;
 }
 
