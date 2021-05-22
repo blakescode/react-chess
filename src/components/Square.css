@@ -1,14 +1,14 @@
 .square {
   border: none;
   float: left;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   line-height: 64px;
   height: 64px;
   padding: 0;
   text-align: center;
   width: 64px;
-  color: white;
+  color: black;
 }
 
 .light {

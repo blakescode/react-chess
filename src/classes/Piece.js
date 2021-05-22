@@ -12,4 +12,8 @@ export class Piece {
   getName() {
     return this.name;
   }
+
+  getColor() {
+    return this.color;
+  }
 }

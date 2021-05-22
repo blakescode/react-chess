@@ -14,6 +14,7 @@ class Square extends React.Component {
         onClick={() => this.props.onClick(this.props.location)}
       >
         {this.displayPiece()}
+        {this.displayPossible()}
       </button>
     );
   }
@@ -26,6 +27,19 @@ class Square extends React.Component {
           src={this.props.piece.getImageURL()}
           alt={this.props.piece.getName()}
         ></img>
+      );
+    }
+  }
+
+  displayPossible() {
+    if (this.props.isPossibleMove) {
+      if (this.props.piece) {
+        return (
+          <p>take</p>
+        );
+      }
+      return (
+        <p>move</p>
       );
     }
   }

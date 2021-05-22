@@ -1,6 +1,7 @@
 import './Board.css';
 import Square from './Square';
 import React from 'react';
+import { moveEqualsLocation } from '../services/helpers';
   
 class Board extends React.Component {
   constructor(props) {
@@ -21,12 +22,14 @@ class Board extends React.Component {
                 let squareColor = isLightColor ? 'light' : 'dark';
                 let location = [row, col];
                 let isActive = this.isActive(location);
+                let isPossibleMove = this.props.possibleMoves.find(move => moveEqualsLocation(move, location));
                 isLightColor = !isLightColor;
                 return (
                   <Square
                     key={location}
                     squareColor={squareColor}
                     isActive={isActive}
+                    isPossibleMove={isPossibleMove}
                     location={location}
                     piece={this.props.boardState[row][col]}
                     onClick={(location) => {this.props.onClick(location); this.updateActiveSquares(location)}}

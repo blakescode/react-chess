@@ -18,6 +18,23 @@ export function getInitialBoard() {
   return board;
 }
 
+export function moveEqualsLocation(move, location) {
+  return (move[0] === location[0] && move[1] === location[1]);
+}
+
+export function getPossibleMoves(piece, [row, col]) {
+  let moves = [];
+  if (piece.getName() === 'pawn') {
+    if (piece.getColor() === 'light') {
+      moves.push([(row - 1), col]);
+      if (row === 6) {
+        moves.push([(row - 2), col]);
+      }
+    }
+  }
+  return moves;
+}
+
 const INIT_BOARD = [
   new Piece('rook', 'dark'), new Piece('knight', 'dark'), new Piece('bishop', 'dark'), new Piece('queen', 'dark'), new Piece('king', 'dark'), new Piece('bishop', 'dark'), new Piece('knight', 'dark'), new Piece('rook', 'dark'),
   new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'),
