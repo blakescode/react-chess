@@ -1,7 +1,7 @@
 import './Board.css';
 import Square from './Square';
 import React from 'react';
-import { moveEqualsLocation } from '../services/helpers';
+import helpers from '../services/helpers';
   
 class Board extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Board extends React.Component {
                 let squareColor = isLightColor ? 'light' : 'dark';
                 let location = [row, col];
                 let isActive = this.isActive(location);
-                let isPossibleMove = this.props.possibleMoves.find(move => moveEqualsLocation(move, location));
+                let isPossibleMove = this.props.possibleMoves.find(move => helpers.moveEqualsLocation(move, location));
                 isLightColor = !isLightColor;
                 return (
                   <Square

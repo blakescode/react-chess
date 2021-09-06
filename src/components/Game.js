@@ -1,4 +1,4 @@
-import { getAlphaLocation, getInitialBoard, getPossibleMoves } from "../services/helpers";
+import helpers from "../services/helpers";
 import Board from './Board';
 import React from 'react';
 
@@ -6,31 +6,59 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [getInitialBoard()], // each turn of history is a 2d Array of board pieces in correct positions
+      history: [helpers.getInitialBoard()], // each turn of history is a 2d Array of board pieces in correct positions
       moves: [],
       turnNumber: 0,
       whiteMovesNext: true,
-      possibleMoves: []
+      possibleMoves: [],
+      activePiece: null,
+      activeLocation: null
     }
   }
 
   handleClick([row, col]) {
-    let alphaLocation = getAlphaLocation([row, col]);
+    let alphaLocation = helpers.getAlphaLocation([row, col]);
     const current = this.state.history[this.state.turnNumber];
     const piece = current[row][col];
-    this.setState({
-      possibleMoves: []
-    });
     if (piece) {
       console.log('clicked '+ piece.getColor() + ' ' + piece.getName() + ' at position: ' + alphaLocation);
-      if (this.state.whiteMovesNext && piece.getColor() === 'light') {
+      if (this.isYourTurn(piece.getColor())) {
         this.setState({
-          possibleMoves: getPossibleMoves(piece, [row, col])
+          possibleMoves: helpers.getPossibleMoves(piece, [row, col]),
+          activePiece: piece,
+          activeLocation: [row, col]
         });
       }
+    } else if (this.state.possibleMoves.find(move => helpers.moveEqualsLocation(move, [row, col]))) {
+      console.log('valid move!');
+      this.movePiece(this.state.activePiece, [row, col]);
+      this.setState({
+        possibleMoves: []
+      });
     } else {
-      console.log('clicked empty board at position: ' + alphaLocation);
+      console.log('clicked empty space at: ' + alphaLocation);
     }
+  }
+
+  movePiece(piece, [row, col]) {
+    console.log('moving ' + piece.getName() + 
+                ' from ' + helpers.getAlphaLocation(this.state.activeLocation) + 
+                ' to ' + helpers.getAlphaLocation([row, col]));
+    const current = this.state.history[this.state.turnNumber];
+    current[this.state.activeLocation[0]][this.state.activeLocation[1]] = null;
+    current[row][col] = piece;
+    this.setState({
+      history: this.state.history.concat([current]),
+      whiteMovesNext: !this.state.whiteMovesNext,
+      turnNumber: this.state.history.length
+    });
+  }
+
+  isYourTurn(color) {
+    return (
+      (this.state.whiteMovesNext && color === 'light') ||
+      (!this.state.whiteMovesNext && color === 'dark')
+    );
   }
 
   squareContainsPiece([row, col]) {
