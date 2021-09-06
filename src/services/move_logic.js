@@ -1,19 +1,27 @@
 const logic = {
   getPawnMoves: function (color, [row, col]) {
     let moves = [];
-    if (color === 'light') {
-      moves.push([(row - 1), col]);
-      if (row === 6) {
-        moves.push([(row - 2), col]);
-      }
-    } else {
-      moves.push([(row + 1), col]);
-      if (row === 1) {
-        moves.push([(row + 2), col]);
-      }
+    moves.push(this.moveUp(color, [row, col]));
+    if (this.pawnOnStartingRow(color, row)) {
+      moves.push(this.moveUp(color, [row, col], 2));
     }
     // TODO: implement diagonal takes
     return moves;
+  },
+
+  moveUp: function(color, [row, col], distance = 1) {
+    if (color === 'light') {
+      return [(row - distance), col];
+    } else {
+      return [(row + distance), col];
+    }
+  },
+
+  pawnOnStartingRow: function(color, row) {
+    return (
+      (color === 'light' && row === 6) || 
+      (color === 'dark' && row === 1)
+    );
   }
 }
 
