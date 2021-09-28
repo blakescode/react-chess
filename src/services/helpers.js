@@ -1,4 +1,5 @@
 import { Piece } from "../classes/piece";
+import { PIECES, COLORS } from "../config/constants"
 import logic from "./move_logic";
 
 const ALPHA = 'abcdefgh'.split('');
@@ -25,7 +26,7 @@ const helpers = {
   },
   
   getPossibleMoves: function (piece, [row, col]) {
-    if (piece.getName() === 'pawn') {
+    if (piece.getName() === PIECES.PAWN) {
       return logic.getPawnMoves(piece.getColor(), [row, col])
     }
     return [];
@@ -35,12 +36,12 @@ const helpers = {
 export default helpers;
 
 const INIT_BOARD = [
-  new Piece('rook', 'dark'), new Piece('knight', 'dark'), new Piece('bishop', 'dark'), new Piece('queen', 'dark'), new Piece('king', 'dark'), new Piece('bishop', 'dark'), new Piece('knight', 'dark'), new Piece('rook', 'dark'),
-  new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'), new Piece('pawn', 'dark'),
+  new Piece(PIECES.ROOK, COLORS.DARK), new Piece(PIECES.KNIGHT, COLORS.DARK), new Piece(PIECES.BISHOP, COLORS.DARK), new Piece(PIECES.QUEEN, COLORS.DARK), new Piece(PIECES.KING, COLORS.DARK), new Piece(PIECES.BISHOP, COLORS.DARK), new Piece(PIECES.KNIGHT, COLORS.DARK), new Piece(PIECES.ROOK, COLORS.DARK),
+  new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK), new Piece(PIECES.PAWN, COLORS.DARK),
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null,
-  new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'), new Piece('pawn', 'light'),
-  new Piece('rook', 'light'), new Piece('knight', 'light'), new Piece('bishop', 'light'), new Piece('queen', 'light'), new Piece('king', 'light'), new Piece('bishop', 'light'), new Piece('knight', 'light'), new Piece('rook', 'light'),
+  new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT), new Piece(PIECES.PAWN, COLORS.LIGHT),
+  new Piece(PIECES.ROOK, COLORS.LIGHT), new Piece(PIECES.KNIGHT, COLORS.LIGHT), new Piece(PIECES.BISHOP, COLORS.LIGHT), new Piece(PIECES.QUEEN, COLORS.LIGHT), new Piece(PIECES.KING, COLORS.LIGHT), new Piece(PIECES.BISHOP, COLORS.LIGHT), new Piece(PIECES.KNIGHT, COLORS.LIGHT), new Piece(PIECES.ROOK, COLORS.LIGHT),
 ];

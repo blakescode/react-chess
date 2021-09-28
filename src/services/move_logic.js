@@ -1,3 +1,5 @@
+import { COLORS } from "../config/constants";
+
 const logic = {
   getPawnMoves: function (color, [row, col]) {
     let moves = [];
@@ -10,7 +12,7 @@ const logic = {
   },
 
   moveUp: function(color, [row, col], distance = 1) {
-    if (color === 'light') {
+    if (color === COLORS.LIGHT) {
       return [(row - distance), col];
     } else {
       return [(row + distance), col];
@@ -19,11 +21,10 @@ const logic = {
 
   pawnOnStartingRow: function(color, row) {
     return (
-      (color === 'light' && row === 6) || 
-      (color === 'dark' && row === 1)
+      (color === COLORS.LIGHT && row === 6) || 
+      (color === COLORS.DARK && row === 1)
     );
   }
 }
 
 export default logic;
-
